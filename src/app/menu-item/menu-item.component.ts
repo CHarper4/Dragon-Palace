@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MenuItem } from '../menu-item';
+import { MenuItem } from './menu-item';
 
 @Component({
   selector: 'app-menu-item',
@@ -13,7 +13,8 @@ export class MenuItemComponent implements OnInit {
       id: 0,
       title: '',
       price: 0,
-      description: ''
+      description: '',
+      imageURL: ''
   };
   
   constructor() { }
