@@ -1,0 +1,22 @@
+img {
+    width: 110%;
+    margin-left: -5%;
+    margin-right: -5%;
+    margin-top: -5%;
+}
+h1 {
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+p {
+    line-height: 2;
+}
+.container-fluid.row {
+    padding: 0;
+}
+.vl {
+    border-right: 3px solid darkgray;
+    height: 300px;
+    margin-right: 3%;
+    margin-left: -3%;
+  } 

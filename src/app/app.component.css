@@ -1,0 +1,27 @@
+nav a:active {
+    color: black;
+}
+.navbar-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.navbar-nav li {
+    margin-right: 8%;
+}
+.btn-light:hover {
+    color: darkgray;
+}
+.navbar-brand h3 {
+    margin-left: 10% !important;
+    margin-right: 5%;
+}
+body {
+    margin: 5% 5% 5% 5%;
+}
+footer {
+    background-color: lightgrey;
+    text-align: center;
+    bottom: 0;
+    padding: 2%; 
+}
