@@ -17,12 +17,13 @@ import { InMemoryDataService } from './in-memory-data.service';
     MenuItemComponent,
     CartComponent,
     HomeComponent,
-    MenuComponent,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    MenuComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [],
   bootstrap: [AppComponent]
