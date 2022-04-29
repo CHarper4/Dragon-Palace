@@ -7,6 +7,8 @@ import { CartComponent } from './cart/cart.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { MenuComponent } from './menu/menu.component';
     MenuItemComponent,
     CartComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { MenuItem } from './menu-item/menu-item';
 })
 
 export class RestaurantService {
-    //assuming db in 'in-memory-data service is named menuItems'
+
     private urlMenuItems = 'api/menuItems'
 
     constructor(private http: HttpClient) {}
