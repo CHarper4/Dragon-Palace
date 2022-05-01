@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   orderMethod: string = '';
   //contact/payment/address info; autofill if user signed in
 
-  constructor(private restaurantService: RestaurantService) { } //inject menu-item service
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +26,4 @@ export class CartComponent implements OnInit {
     //add order to user's order history
     //logOrder(cartItems, orderMethod, ...);
   }
-
-
 }
