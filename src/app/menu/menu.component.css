@@ -1,3 +1,11 @@
 h1 {
     text-align: center;
 } 
+.item-container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 3%;
+}
+.card {
+    padding: 20px;
+}

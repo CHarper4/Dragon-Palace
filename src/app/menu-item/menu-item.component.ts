@@ -26,7 +26,7 @@ export class MenuItemComponent implements OnInit {
     this.getMenuItems();
   }
 
-  addToCart() {
+  addToCart(itemAmount: string) {
     //add current item to cart array
     //take into account amount selected
   }
