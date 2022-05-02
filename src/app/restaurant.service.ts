@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, tap } from "rxjs";
 import { MenuItem } from './menu-item/menu-item';
+import { UserOrders } from "./user/user-orders";
+import { Login } from './login/login';
 
 @Injectable({
     providedIn: 'root',
@@ -9,7 +11,10 @@ import { MenuItem } from './menu-item/menu-item';
 
 export class RestaurantService {
 
-    private urlMenuItems = 'api/menuItems'
+    private urlMenuItems = 'api/menuItems';
+    private urlUserOrders = 'api/userOrders';
+    private urlUserLogins = 'api/userLogins';
+
 
     constructor(private http: HttpClient) {}
 
@@ -24,10 +29,10 @@ export class RestaurantService {
         }
     }
 
-    //these methods assume tap is writing to console, not a separate message service
+    //these methods assume tap is writing to console, not a separate message service (for now)
 
 
-    //-------------------MENU-ITEM SERVICES---------------------------------------------
+    //-------------------MENU-ITEM SERVICES----------------------------------------------------------
     getMenuItems(): Observable<MenuItem[]> {
         return this.http.get<MenuItem[]>(this.urlMenuItems)
         .pipe(
@@ -44,21 +49,23 @@ export class RestaurantService {
             catchError(this.handleError<MenuItem>('getMenuItem'))
         )
     }
-    //----------------END MENU-ITEM SERVICES----------------------------------------------
 
-    //-----------LOGIN SERVICES---------
+    //-----------LOGIN SERVICES-------------------------------------------------------------------
+    getLogin(id: number): Observable<Login> {
+      const urlUserLogin = `${this.urlUserLogins}/${id}`;
+      return this.http.get<Login>(urlUserLogin)
+      .pipe(
+          tap(_ => console.log('fetched user')),
+          catchError(this.handleError<Login>('getLogin'))
+      )
+  }
 
-    //-----------END LOGIN SERVICES------
+    //-----------USER SERVICES-----------------------------------------------------------------------
+    
 
-    //-----------USER SERVICES-----------
+    //--------------REGISTER SERVICES----------------------------------------------------------------
 
-    //------------END USER SERVICES--------
 
-    //--------------REGISTER SERVICES-----------
+    //----------CART SERVICES------------------------------------------------------------------------
 
-    //---------END REGISTER SERVICES---------------
-
-    //----------CART SERVICES------------
-
-    //---------END CART SERVICES----------
 }

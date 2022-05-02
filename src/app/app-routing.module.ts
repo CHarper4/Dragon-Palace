@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'menu', component: MenuComponent },
   { path: 'cart', component: CartComponent },
   { path: 'user', component: UserComponent },
-  { path: '', redirectTo: 'home', pathMatch: "full"}
+  { path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({

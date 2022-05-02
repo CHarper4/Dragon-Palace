@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from './menu-item';
+import { RestaurantService } from '../restaurant.service';
 
 @Component({
   selector: 'app-menu-item',
@@ -9,22 +10,29 @@ import { MenuItem } from './menu-item';
 export class MenuItemComponent implements OnInit {
   itemAmount?: number;
 
-  @Input() menuItem: MenuItem = {
-      id: 0,
-      title: '',
-      price: 0,
-      description: '',
-      imageURL: ''
+  menuItems: MenuItem[];
+
+ @Input() menuItem: MenuItem = {
+     id: 0,
+     title: '',
+     price: '',
+     description: '',
+     imageURL: ''
   };
   
-  constructor() { }
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
+    this.getMenuItems();
   }
 
   addToCart() {
     //add current item to cart array
     //take into account amount selected
+  }
+
+  getMenuItems(): void {
+    this.restaurantService.getMenuItems().subscribe(menuItems => this.menuItems = menuItems);
   }
 
 

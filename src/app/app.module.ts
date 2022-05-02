@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,16 @@ import { InMemoryDataService } from './in-memory-data.service';
     MenuItemComponent,
     CartComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    RegisterComponent,
+    LoginComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
