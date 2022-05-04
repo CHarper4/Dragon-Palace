@@ -31,7 +31,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         username:"testUsername", pastOrders: menuItems[2]
       }
-    ]
+    ];
 
     const userLogins = [
       {
