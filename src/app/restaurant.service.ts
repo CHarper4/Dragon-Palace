@@ -15,6 +15,7 @@ export class RestaurantService {
     private urlUserOrders = 'api/userOrders';
     private urlUserLogins = 'api/userLogins';
 
+    cartItemIDs: number[] = [];
 
     constructor(private http: HttpClient) {}
 
@@ -80,4 +81,7 @@ export class RestaurantService {
             catchError(this.handleError<UserOrders>('getCartOrders'))
         )
     }
+    
+
+
 }

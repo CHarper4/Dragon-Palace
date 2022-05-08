@@ -1,9 +1,90 @@
-<h1>Cart</h1>
+<div class="container-fluid row justify-content-end">
+    <div class="col-4 sidebar">
+        <h5 style="text-align:center">Summary: </h5>
+    </div>
+</div>
 
-<!-- <div *ngFor="let item of cartItems">
-    <app-menu-item [menuItems] = "menuItem"></app-menu-item>
-</div> -->
+<div class="container-fluid row">
+    <div class="col-4 section-label">
+        <h5>Method: </h5>
+    </div>
+    <div class="col-4">
+        <input type="radio" id="delivery" name="method" (click)="this.method='delivery'; methodUpdate()">
+        <label for="delivery" style="padding-left:1%">Delivery</label>
+        <input type="radio" id="pickup" name="method" (click)="this.method='pickup'; methodUpdate()">
+        <label for="pickup" style="padding-left:1%">Pick-up</label>
+    </div>
+    <div class="col-4 sidebar sidebar-content">
+        <p>Subtotal: ${{subTotal.toFixed(2)}}</p>
+         
+    </div>
+</div>
 
-<div class="side-bar-summary">
-    <button class="order-button" (click)="placeOrder()">Place Order</button>
+<div class="container-fluid row">
+    <div class="col-4 section-label">
+        <h5>Contact: </h5>
+    </div>
+    <div class="col-4">
+        <input type="text" placeholder="First Name" style="width:100px">
+        <input type="text" class="text-input" placeholder="Last Name" style="width:100px">
+        <input type="text" class="text-input" placeholder="Email" style="width:150px">
+        <input type="text" class="text-input" placeholder="Phone" style="width:150px">
+    </div>
+    <div class="col-4 sidebar sidebar-content">
+        <p>Delivery Fee: ${{deliverFee.toFixed(2)}}</p>
+    </div>
+</div>
+
+<div class="container-fluid row">
+    <div class="col-4 section-label">
+        <h5>Payment: </h5>
+    </div>
+    <div class="col-4">
+        <input type="text" placeholder="Card Number" style="width:200px">
+        <input type="text" class="text-input" placeholder="CVV" style="width:50px">
+        <input type="text" class="text-input" placeholder="MM/YY" style="width:100px">
+        <input type="text" class="text-input" placeholder="Zip" style="width:150px">
+    </div>
+    <div class="col-4 sidebar sidebar-content">
+        <p>Tax: ${{tax.toFixed(2)}}</p>
+    </div>
+</div>
+
+<div class="container-fluid row">
+    <div class="col-4 section-label">
+        <h5>Address: </h5>
+    </div>
+    <div class="col-4">
+        <input type="text" placeholder="Address" style="width:350px">
+    </div>
+    <div class="col-4 sidebar sidebar-content">
+        <label for="tip">Driver Tip: </label>
+        <input type="number" id="tip" placeholder="0.00" step="0.01" min="0" style="width:100px" [(ngModel)]="driverTip" (change)="calcTotal()">
+    </div>
+</div>
+
+<div class="container-fluid row">
+    <div class="col-4 section-label">
+        <h5>Order Summary: </h5>
+    </div>
+    <div class="col-4">
+        <div *ngFor="let item of cartItems" class="summary-item">
+            {{item.title}}: {{item.price}}
+        </div>
+    </div>
+    <div class="col-4 sidebar">
+        <hr class="sidebar-divider">
+    </div>
+</div>
+
+<div class="container-fluid row justify-content-end">
+    <div class="col-4 sidebar sidebar-content">
+        <h6>Total: ${{total.toFixed(2)}}</h6>
+    </div>
+</div>
+
+<div class="container-fluid row justify-content-end">
+    <div class="col-4 sidebar text-center">
+        <button class="order-button btn btn-primary" (click)="placeOrder()">Place Order</button>
+    </div>
 </div>

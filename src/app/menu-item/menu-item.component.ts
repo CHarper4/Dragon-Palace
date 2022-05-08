@@ -8,8 +8,6 @@ import { RestaurantService } from '../restaurant.service';
   styleUrls: ['./menu-item.component.css']
 })
 export class MenuItemComponent implements OnInit {
-  itemAmount?: number;
-
   menuItems: MenuItem[];
 
  @Input() menuItem: MenuItem = {
@@ -26,15 +24,15 @@ export class MenuItemComponent implements OnInit {
     this.getMenuItems();
   }
 
-  addToCart() {
-    //add current item to cart array
-    //take into account amount selected
+  addToCart(itemAmount: string) {
+    for(let i = 0; i < parseInt(itemAmount); i++) {
+      this.restaurantService.cartItemIDs.push(this.menuItem.id);
+    }
   }
 
   getMenuItems(): void {
     this.restaurantService.getMenuItems().subscribe(menuItems => this.menuItems = menuItems);
   }
-
 
 
 }

@@ -1,8 +1,6 @@
 <h1>Menu</h1>
-<div class="container-fluid row" style="width:100%">
-    <div>
-        <p *ngFor="let menuItem of menuItems">
+<div class="container-fluid row item-container">
+        <p class="col-4" *ngFor="let menuItem of menuItems">
             <app-menu-item [menuItem] = "menuItem"></app-menu-item>
         </p>
-    </div>
 </div>
