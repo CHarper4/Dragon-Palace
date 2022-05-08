@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, tap } from "rxjs";
 import { MenuItem } from './menu-item/menu-item';
 import { UserOrders } from "./user/user-orders";
-import { Login } from './login/login';
+import { User } from "./user/user";
 
 @Injectable({
     providedIn: 'root',
@@ -51,21 +51,33 @@ export class RestaurantService {
     }
 
     //-----------LOGIN SERVICES-------------------------------------------------------------------
-    getLogin(id: number): Observable<Login> {
-      const urlUserLogin = `${this.urlUserLogins}/${id}`;
-      return this.http.get<Login>(urlUserLogin)
-      .pipe(
-          tap(_ => console.log('fetched user')),
-          catchError(this.handleError<Login>('getLogin'))
-      )
-  }
-
-    //-----------USER SERVICES-----------------------------------------------------------------------
     
 
-    //--------------REGISTER SERVICES----------------------------------------------------------------
+    //-----------USER SERVICES-----------------------------------------------------------------------
+    getUser(username: string): Observable<User> {
+        const urlUserLogin = `${this.urlUserLogins}/${username}`;
+        return this.http.get<User>(urlUserLogin)
+        .pipe(
+            tap(_ => console.log('fetched user')),
+            catchError(this.handleError<User>('getUser'))
+        )
+    }
 
+    //--------------REGISTER SERVICES----------------------------------------------------------------
+    registerUser(user: User): Observable<User> {
+        return this.http.post<User>(this.urlUserLogins, user, this.httpOptions)
+        .pipe(tap((newUser: User) => console.log('added new user')),
+            catchError(this.handleError<User>('registerUser'))
+        )
+    }
 
     //----------CART SERVICES------------------------------------------------------------------------
-
+    getCartOrders(user: User["username"], pastOrders: MenuItem[]): Observable<UserOrders> {
+        const urlUserOrders = `${this.urlUserOrders}/${user}`;
+        return this.http.get<UserOrders>(urlUserOrders)
+        .pipe(
+            tap(_ => console.log('fetched cart orders')),
+            catchError(this.handleError<UserOrders>('getCartOrders'))
+        )
+    }
 }
