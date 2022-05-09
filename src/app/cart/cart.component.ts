@@ -18,8 +18,6 @@ export class CartComponent implements OnInit {
   driverTip: number = 0;
   total: number = 0;
 
-  //time, contact, payment, address
-
   constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
@@ -69,7 +67,6 @@ export class CartComponent implements OnInit {
     //reset cart
     this.restaurantService.cartItemIDs = [];
     this.cartItems = [];
-    console.log(this.method);
   }
 
   

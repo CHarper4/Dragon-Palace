@@ -12,10 +12,10 @@ import { Login } from './login/login';
 export class RestaurantService {
 
     private urlMenuItems = 'api/menuItems';
-    private urlUserOrders = 'api/userOrders';
     private urlUserLogins = 'api/userLogins';
 
     cartItemIDs: number[] = [];
+    activeUserID = 1;
 
     constructor(private http: HttpClient) {}
 
@@ -59,7 +59,7 @@ export class RestaurantService {
           tap(_ => console.log('fetched user')),
           catchError(this.handleError<Login>('getLogin'))
       )
-  }
+    }
 
     //-----------USER SERVICES-----------------------------------------------------------------------
     

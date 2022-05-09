@@ -1,1 +1,10 @@
-<h1>User Test Header</h1>
+<h1>Welcome!</h1>
+
+<h4>Order History</h4>
+
+<div class="container-fluid row" *ngFor="let order of userOrders">
+    <div class="col-6">
+        <ng-container *ngFor="let item of order">{{item.title}} ({{item.price}}) </ng-container>
+        <button (click)="addToCart(order)">Add to Cart</button>
+    </div>
+</div>
