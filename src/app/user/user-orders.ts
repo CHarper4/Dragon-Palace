@@ -1,7 +1,7 @@
-import { User } from "./user"
+import { Login } from "../login/login"
 import { MenuItem } from "../menu-item/menu-item"
 
 export interface UserOrders {
-    user: User["username"],
+    user: Login["username"],
     pastOrders: MenuItem[]
 }

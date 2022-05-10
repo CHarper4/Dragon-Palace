@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from '../restaurant.service';
-import { User } from '../user/user';
 
 @Component({
   selector: 'app-register',

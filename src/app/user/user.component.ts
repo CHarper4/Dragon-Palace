@@ -14,6 +14,8 @@ export class UserComponent implements OnInit {
   tempUser: Login;
   activeUser: Login = { id: 0, username: "", password: "", pastOrders: [] };
   userOrders: MenuItem[][] = [];
+  displayStyle = "none";
+
 
   constructor(private restaurantService: RestaurantService) { }
 
@@ -40,5 +42,12 @@ export class UserComponent implements OnInit {
     }
   }
 
+  openPopup() {
+    this.displayStyle = "block";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
+  }
 
 }

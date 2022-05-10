@@ -5,6 +5,23 @@
 <div class="container-fluid row" *ngFor="let order of userOrders">
     <div class="col-6">
         <ng-container *ngFor="let item of order">{{item.title}} ({{item.price}}) </ng-container>
-        <button (click)="addToCart(order)">Add to Cart</button>
+        <button (click)="addToCart(order); openPopup()">Add to Cart</button>
     </div>
 </div>
+
+<!--Previous Order Placed popup-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="title">Previous Order Added to Cart</h4>
+        </div>
+        <div class="modal-body" id="message">
+          <p>Your previous order has been added to your cart</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
