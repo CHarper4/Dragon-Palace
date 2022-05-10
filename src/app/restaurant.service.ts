@@ -64,10 +64,7 @@ export class RestaurantService {
           tap(_ => console.log('fetched user')),
           catchError(this.handleError<Login>('getLogin'))
       )
-    }
-
-    //-----------USER SERVICES-----------------------------------------------------------------------
-    
+    }    
 
     //-----------USER SERVICES-----------------------------------------------------------------------
 
