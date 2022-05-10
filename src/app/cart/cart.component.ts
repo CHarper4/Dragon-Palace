@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from '../menu-item/menu-item';
 import { RestaurantService } from '../restaurant.service';
-import { UserOrders } from '../user/user-orders';
-import { User } from '../user/user';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -21,22 +18,9 @@ export class CartComponent implements OnInit {
   driverTip: number = 0;
   total: number = 0;
 
-  //time, contact, payment, address
-
-  constructor(
-    private restaurantService: RestaurantService) { }
-
-  userOrders: UserOrders[];
   displayStyle = "none";
 
-
-  @Input() userOrder: UserOrders = {
-    user: "",
-    pastOrders: []
-  }
-
-
-
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
     this.getCartItems();
@@ -89,7 +73,6 @@ export class CartComponent implements OnInit {
     //reset cart
     this.restaurantService.cartItemIDs = [];
     this.cartItems = [];
-    console.log(this.method);
   }
 
   openPopup() {

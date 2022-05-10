@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+//import { MenuItem } from './menu-item/menu-item';
 
 @Injectable({
   providedIn: 'root'
@@ -27,22 +28,16 @@ export class InMemoryDataService implements InMemoryDbService {
       },
     ];
 
-    const userOrders = [
-      {
-        username:"testUsername", pastOrders: menuItems[2]
-      }
-    ];
-
     const userLogins = [
       {
-        id:1, username:"testUsername", password:"testPassword"
+        id:1, username:"testUsername", password:"testPassword", pastOrders: [ [1, 4, 6], [3, 4] ]
       },
       {
-        id:2, username:"otherTestUsername", password:"testPassword-2"
+        id:2, username:"otherTestUsername", password:"testPassword-2", pastOrders: [ [3, 1], [4] ]
       },
     ];
-    return {menuItems};
-    return {userOrders};
-    return {userLogins};
+
+    return {menuItems, userLogins};
+    
   }
 }
