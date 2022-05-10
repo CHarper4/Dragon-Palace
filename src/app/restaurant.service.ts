@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, tap } from "rxjs";
 import { MenuItem } from './menu-item/menu-item';
-import { UserOrders } from "./user/user-orders";
 import { Login } from './login/login';
 import { MessageService } from "./message.service";
 
@@ -16,10 +15,9 @@ export class RestaurantService {
     private urlUserLogins = 'api/userLogins';
 
     cartItemIDs: number[] = [];
-    activeUserID = 1;
+    activeUserID = 1;   //determines what user is logged in
 
-    constructor(private http: HttpClient, private messageService: MessageService
-        ) {}
+    constructor(private http: HttpClient, private messageService: MessageService) {}
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
@@ -67,9 +65,24 @@ export class RestaurantService {
       )
     }    
 
+    getLogins(): Observable<Login[]> {
+        return this.http.get<Login[]>(this.urlUserLogins)
+        .pipe(
+            tap(_ => console.log('fetched users')),
+            catchError(this.handleError<Login[]>('getLogins', []))
+        )
+    }
+    
     //-----------USER SERVICES-----------------------------------------------------------------------
 
     //--------------REGISTER SERVICES----------------------------------------------------------------
+    addUser(user: Login): Observable<Login> {
+        return this.http.post<Login>(this.urlUserLogins, user, this.httpOptions)
+        .pipe(
+            tap((_ => console.log('added user'))),
+            catchError(this.handleError<Login>('addUser'))
+        )
+    } 
 
     //----------CART SERVICES------------------------------------------------------------------------
     updateOrders(user: Login) {

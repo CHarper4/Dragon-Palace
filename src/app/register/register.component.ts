@@ -1,25 +1,40 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoginInfo, Logins } from '../login/login-info';
+import { Login } from '../login/login';
+import { RestaurantService } from '../restaurant.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   @Input() loginInfo: LoginInfo={
     num:0,
     username:'',
     password:''
   }
-  constructor() { }
+  
   activeUser=-1
   username=''
   newUser=''
   newPass=''
   name:number
   signedIn:boolean
+
+  users: Login[] = [];
+
+  constructor(private restaurantService: RestaurantService) { }
+
   ngOnInit() {
+    this.getLogins();
   }
+
+  getLogins() {
+    this.restaurantService.getLogins().subscribe(users => this.users = users);
+  }
+
   newCompair(){
     this.signedIn=false
     let username=this.newUser
@@ -39,8 +54,17 @@ export class RegisterComponent implements OnInit {
         this.activeUser = this.loginInfo.num+1
         //this.loginInfo=Logins[Logins.length-1]
         //console.log(this.loginInfo); //for testing
+
+        //create new user, add to user array, and set as logged in user
+        let newID = this.users[this.users.length-1].id + 1;
+        let newLogin = { id: newID, username: this.newUser, password: this.newPass, pastOrders: [] }
+        this.restaurantService.addUser(newLogin).subscribe(_ => {
+          this.getLogins(),
+          this.restaurantService.activeUserID = newID;
+        });
       }
     }
+
   }
   userChange(event:any){
     this.newUser=event.target.value

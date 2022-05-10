@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoginInfo, Logins } from './login-info';
+import { Login } from './login';
+import { RestaurantService } from '../restaurant.service';
 
 
 @Component({
@@ -18,10 +20,19 @@ export class LoginComponent implements OnInit {
     username:'',
     password:''
   }
-  constructor() { }
+
+  users: Login[] = [];
+
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
+    this.getLogins();
   }
+
+  getLogins() {
+    this.restaurantService.getLogins().subscribe(users => this.users = users);
+  }
+
   compair(){
     let username=this.newUser
     let password= this.newPass
@@ -36,6 +47,17 @@ export class LoginComponent implements OnInit {
       }
       else{this.activeUser=-1}
     }
+
+    //check user array for matching username and password
+    //if matching, switch activeUserID to that user's id
+    for(let user of this.users) {
+      if ((user.username.toLowerCase() == this.newUser.toLowerCase()) && (user.password == this.newPass)) {
+        this.restaurantService.activeUserID = user.id;
+        console.log('user ' + user.username + ' logged in'); //message here?
+        break;
+      }
+    }
+    
   }
   userChange(event:any){
     this.newUser=event.target.value

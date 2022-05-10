@@ -27,10 +27,6 @@ export class CartComponent implements OnInit {
     this.getCartItems();
   }
 
-  getCartOrders(): void{
-
-  }
-
   getCartItems() {
     this.cartLength = this.restaurantService.cartItemIDs.length;
 
