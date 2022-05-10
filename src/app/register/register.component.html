@@ -1,1 +1,10 @@
-<p>register works!</p>
+<p>
+    <input type='text' id='username' (keyup)='userChange($event)' placeholder="Username">
+    </p>
+    <p>
+    <input type='text' id='password' (keyup)='passChange($event)' placeholder="Password">
+    </p>
+    <p>
+      <button  (click)="newCompair()" >Register</button>
+    </p>
+    
