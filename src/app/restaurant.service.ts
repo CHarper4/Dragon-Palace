@@ -72,6 +72,12 @@ export class RestaurantService {
     //--------------REGISTER SERVICES----------------------------------------------------------------
 
     //----------CART SERVICES------------------------------------------------------------------------
+    updateOrders(user: Login) {
+        return this.http.put(this.urlUserLogins, user, this.httpOptions).pipe(
+            tap(_ => console.log('updated user orders')),
+            catchError(this.handleError<any>('updateOrders'))
+        );
+    }
 
 
 }

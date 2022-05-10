@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from '../menu-item/menu-item';
 import { RestaurantService } from '../restaurant.service';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'app-cart',
@@ -69,6 +70,14 @@ export class CartComponent implements OnInit {
 
   placeOrder() {
     //add order to user's order history
+    let itemIDs: number[] = [];
+    for(let item of this.cartItems) {
+      itemIDs.push(item.id);
+    }
+    this.restaurantService.getLogin(this.restaurantService.activeUserID).subscribe(user => {
+      user.pastOrders.push(itemIDs);
+      this.restaurantService.updateOrders(user).subscribe();
+    });
 
     //reset cart
     this.restaurantService.cartItemIDs = [];

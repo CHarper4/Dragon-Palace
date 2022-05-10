@@ -12,7 +12,6 @@ import { MenuItem } from '../menu-item/menu-item';
 export class UserComponent implements OnInit {
 
   tempUser: Login;
-  activeUser: Login = { id: 0, username: "", password: "", pastOrders: [] };
   userOrders: MenuItem[][] = [];
   displayStyle = "none";
 

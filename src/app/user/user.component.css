@@ -1,3 +1,13 @@
-h1 {
+h3 {
     text-align: center;
+    padding-bottom: 1%; 
+}
+.row {
+    padding-top: 2%;
+}
+.items {
+    text-align: right;
+}
+.orderagain {
+    margin-left: 5%;
 }

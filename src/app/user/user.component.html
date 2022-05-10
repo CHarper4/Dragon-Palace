@@ -1,11 +1,11 @@
-<h1>Welcome!</h1>
-
-<h4>Order History</h4>
+<h3>Order History</h3>
 
 <div class="container-fluid row" *ngFor="let order of userOrders">
+    <div class="col-6 items justify-content-end">
+        <span *ngFor="let item of order"><b>{{item.title}}</b> ({{item.price}}) </span>
+    </div>
     <div class="col-6">
-        <ng-container *ngFor="let item of order">{{item.title}} ({{item.price}}) </ng-container>
-        <button (click)="addToCart(order); openPopup()">Add to Cart</button>
+        <button class="btn btn-sm btn-primary orderagain" (click)="addToCart(order); openPopup()" routerLink="/cart">Order Again</button>
     </div>
 </div>
 
