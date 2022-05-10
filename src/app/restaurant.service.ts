@@ -4,6 +4,7 @@ import { catchError, Observable, of, tap } from "rxjs";
 import { MenuItem } from './menu-item/menu-item';
 import { UserOrders } from "./user/user-orders";
 import { User } from "./user/user";
+import { MessageService } from "./message.service";
 
 @Injectable({
     providedIn: 'root',
@@ -17,7 +18,8 @@ export class RestaurantService {
 
     cartItemIDs: number[] = [];
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private messageService: MessageService
+        ) {}
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type' : 'application/json'})
@@ -32,6 +34,10 @@ export class RestaurantService {
 
     //these methods assume tap is writing to console, not a separate message service (for now)
 
+    //-------------------MESSAGES-------------------------------------------------------------------
+    private log(message: string) {
+        this.messageService.add(`RestaurantService: ${message}`);
+    }
 
     //-------------------MENU-ITEM SERVICES----------------------------------------------------------
     getMenuItems(): Observable<MenuItem[]> {

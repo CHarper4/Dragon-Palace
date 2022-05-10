@@ -27,6 +27,8 @@ export class CartComponent implements OnInit {
     private restaurantService: RestaurantService) { }
 
   userOrders: UserOrders[];
+  displayStyle = "none";
+
 
   @Input() userOrder: UserOrders = {
     user: "",
@@ -90,5 +92,11 @@ export class CartComponent implements OnInit {
     console.log(this.method);
   }
 
-  
+  openPopup() {
+    this.displayStyle = "block";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
+  }
 }

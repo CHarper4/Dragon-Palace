@@ -85,6 +85,23 @@
 
 <div class="container-fluid row justify-content-end">
     <div class="col-4 sidebar text-center">
-        <button class="order-button btn btn-primary" (click)="placeOrder()">Place Order</button>
+        <button class="order-button btn btn-primary" (click)="placeOrder(); openPopup()">Place Order</button>
     </div>
 </div>
+
+<!--Order Placed popup-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="title">Order Placed!</h4>
+        </div>
+        <div class="modal-body" id="message">
+          <p>Thank you for shopping at Dragon Palace, your order has been placed!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

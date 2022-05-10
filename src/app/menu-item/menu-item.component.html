@@ -22,8 +22,24 @@
 
         </div>
         <div class="col-md-4">
-            <button class="add-button btn btn-sm btn-primary" type="button" (click)="addToCart(itemAmount.value)">Add to Cart</button>
+            <button class="add-button btn btn-sm btn-primary" type="button" (click)="addToCart(itemAmount.value); openPopup();">Add to Cart</button>
         </div>
-
     </div>
 </div>
+
+<!--Add to Cart Popup-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="title">Item(s) Added to Cart</h4>
+        </div>
+        <div class="modal-body" id="message">
+          <p>{{itemAmount.value}} orders of {{menuItem.title}} was added to your cart</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

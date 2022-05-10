@@ -9,6 +9,8 @@ import { RestaurantService } from '../restaurant.service';
 })
 export class MenuItemComponent implements OnInit {
   menuItems: MenuItem[];
+  displayStyle = "none";
+
 
  @Input() menuItem: MenuItem = {
      id: 0,
@@ -34,5 +36,12 @@ export class MenuItemComponent implements OnInit {
     this.restaurantService.getMenuItems().subscribe(menuItems => this.menuItems = menuItems);
   }
 
+  openPopup() {
+    this.displayStyle = "block";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
+  }
 
 }

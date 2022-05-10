@@ -4,7 +4,6 @@ nav a:active {
 .navbar-nav {
     flex-direction: row;
     justify-content: flex-end;
-
 }
 .navbar-nav li {
     margin-right: 8%;
