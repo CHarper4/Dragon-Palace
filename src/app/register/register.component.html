@@ -2,10 +2,10 @@
     <input type='text' id='username' (keyup)='userChange($event)' placeholder="Username" #username>
     </p>
     <p>
-    <input type='text' id='password' (keyup)='passChange($event)' placeholder="Password">
+    <input type='password' id='password' (keyup)='passChange($event)' placeholder="Password">
     </p>
     <p>
-      <button  (click)="newCompair(); openPopup()" >Register</button>
+      <button  class="btn btn-primary" (click)="newCompair(); openPopup()" >Register</button>
     </p>
     
 <!--Registered popup-->
