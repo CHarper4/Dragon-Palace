@@ -15,7 +15,7 @@ export class RestaurantService {
     private urlUserLogins = 'api/userLogins';
 
     cartItemIDs: number[] = [];
-    activeUserID = 1;   //determines what user is logged in
+    activeUserID = 0;   //determines what user is logged in
 
     constructor(private http: HttpClient, private messageService: MessageService) {}
 
