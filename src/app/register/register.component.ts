@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
 
   users: Login[] = [];
 
+  displayStyle = "none";
+
   constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
@@ -71,5 +73,13 @@ export class RegisterComponent implements OnInit {
   }
   passChange(event:any){
     this.newPass=event.target.value
+  }
+
+  openPopup() {
+    this.displayStyle = "block";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
   }
 }

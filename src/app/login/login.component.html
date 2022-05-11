@@ -1,9 +1,26 @@
 <p>
-    <input type='text' id='username' (keyup)='userChange($event)' placeholder="Username">
+    <input type='text' id='username' (keyup)='userChange($event)' placeholder="Username" #username>
     </p>
     <p>
     <input type='text' id='password' (keyup)='passChange($event)' placeholder="Password">
     </p>
     <p>
-      <button (click)="compair()">Login</button>
+      <button (click)="compair(); openPopup()">Login</button>
 </p>
+
+<!--Login popup-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="title">Logged In</h4>
+      </div>
+      <div class="modal-body" id="message">
+        <p>You are now logged in as: {{username.value}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,8 +18,7 @@ export class CartComponent implements OnInit {
   tax: number = 0;
   driverTip: number = 0;
   total: number = 0;
-
-  displayStyle = "none";
+  displayStyle = "none"
 
   constructor(private restaurantService: RestaurantService) { }
 
@@ -79,6 +78,7 @@ export class CartComponent implements OnInit {
     this.restaurantService.cartItemIDs = [];
     this.cartItems = [];
   }
+
 
   openPopup() {
     this.displayStyle = "block";

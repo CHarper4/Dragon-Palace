@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   newUser=''
   newPass=''
   num=0
+  displayStyle = "none";
+
   @Input() loginInfo: LoginInfo={
     num:0,
     username:'',
@@ -64,5 +66,13 @@ export class LoginComponent implements OnInit {
   }
   passChange(event:any){
     this.newPass=event.target.value
+  }
+
+  openPopup() {
+    this.displayStyle = "block";
+  }
+
+  closePopup() {
+    this.displayStyle = "none";
   }
 }
